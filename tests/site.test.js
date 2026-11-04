@@ -142,3 +142,9 @@ test("og_image_exists", () => {
   assert.equal(image.readUInt32BE(16), 1200);
   assert.equal(image.readUInt32BE(20), 630);
 });
+
+test("responsive card styles define components and a mobile layout", () => {
+  const css = read("src/assets/site.css");
+  for (const selector of [".card-grid", ".video-card", ".content-card", ".page-hero", ":focus-visible"]) assert.ok(css.includes(selector), selector);
+  assert.match(css, /@media\s*\([^)]*max-width[^)]*\)[\s\S]*?grid-template-columns:\s*1fr/);
+});
