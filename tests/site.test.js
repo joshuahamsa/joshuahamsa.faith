@@ -67,6 +67,7 @@ test("music groups recordings and playlists as media cards", () => {
   const html = page("/music/");
   assert.match(html, /class="media-card-grid recorded-grid"/);
   assert.match(html, /class="media-card-grid playlist-grid"/);
+  assert.match(html, /Official video · Produced by H3 Music/);
 });
 
 test("candlelight_is_the_first_testimony card", () => {
@@ -99,7 +100,7 @@ test("vimeo_is_a_link_card", () => {
 test("video cards link directly to YouTube with a preview image", () => {
   const html = page("/testimony/");
   assert.match(html, /class="video-card"/);
-  assert.match(html, /https:\/\/www\.youtube\.com\/watch\?v=cfXkQisIDOo/);
+  assert.match(html, /https:\/\/www\.youtube\.com\/watch\?v=cfXkQisIDOo&amp;t=478s/);
   assert.match(html, /https:\/\/i\.ytimg\.com\/vi\/cfXkQisIDOo\/hqdefault\.jpg/);
 });
 
