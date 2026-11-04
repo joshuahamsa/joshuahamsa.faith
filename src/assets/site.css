@@ -1,21 +1,19 @@
 :root {
-  color-scheme: light dark;
-  --paper: #f6f4ef;
-  --ink: #2b2622;
-  --ink-soft: #57503f;
-  --accent: #8a5d2e;
-  --rule: #ddd7cb;
-  --panel: #efebe2;
-  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --paper: #f3f4f6;
+  --ink: #16181d;
+  --ink-soft: #5c6370;
+  --accent: #1f6b4a;
+  --rule: #e2e4e8;
+  --panel: #ffffff;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #191512;
-    --ink: #e6e0d6;
-    --ink-soft: #b3a996;
-    --accent: #c89a5b;
-    --rule: #332c25;
-    --panel: #211c17;
+    --paper: #10141c;
+    --ink: #e8eaef;
+    --ink-soft: #a7adba;
+    --accent: #8fceaa;
+    --rule: #2a3140;
+    --panel: #181c24;
   }
 }
 * { box-sizing: border-box; }
