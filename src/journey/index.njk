@@ -4,11 +4,14 @@ title: Journey
 section: journey
 permalink: /journey/
 ---
-<h1>Journey</h1>
+<header class="page-hero"><p class="eyebrow">Along the way</p><h1>Journey</h1></header>
+<div class="article-card-grid">
 {% for post in collections.posts %}
-<article>
+<article class="article-card">
   <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
   <p class="meta">{{ post.date | longDate }}</p>
   <p>{{ post.data.summary }}</p>
+  <a class="text-action" href="{{ post.url }}">Read entry <span aria-hidden="true">→</span></a>
 </article>
 {% endfor %}
+</div>

@@ -21,10 +21,33 @@ function videoEmbed(entry, options = {}) {
   );
 }
 
+function videoCard(entry) {
+  const title = escapeHtml(entry.title);
+  const church = entry.church ? `<span>${escapeHtml(entry.church)}</span>` : "";
+  const date = entry.date ? `<span>${escapeHtml(entry.date)}</span>` : "";
+  const meta = church || date ? `<p class="card-meta">${[church, date].filter(Boolean).join("<span aria-hidden=\"true\">·</span>")}</p>` : "";
+  const note = entry.note ? `<p class="card-meta">${escapeHtml(entry.note)}</p>` : "";
+  const isVimeo = entry.host === "vimeo";
+  const watchUrl = isVimeo
+    ? `https://vimeo.com/${entry.videoId}`
+    : `https://www.youtube.com/watch?v=${entry.videoId}${entry.start !== undefined ? `&amp;t=${entry.start}s` : ""}`;
+  const media = isVimeo
+    ? '<div class="video-card-fallback" aria-hidden="true"><span>Watch on Vimeo</span></div>'
+    : `<img src="https://i.ytimg.com/vi/${entry.videoId}/hqdefault.jpg" alt="" loading="lazy">`;
+
+  return (
+    `<article class="video-card">` +
+    `<a class="video-card-media" href="${watchUrl}" aria-label="Watch ${title}">${media}</a>` +
+    `<div class="video-card-body"><p class="card-kicker">${isVimeo ? "Vimeo" : "Video"}</p><h2>${title}</h2>${meta}${note}` +
+    `<a class="card-action" href="${watchUrl}">Watch <span aria-hidden="true">↗</span></a></div></article>`
+  );
+}
+
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/CNAME");
   eleventyConfig.addShortcode("video", videoEmbed);
+  eleventyConfig.addShortcode("videoCard", videoCard);
   eleventyConfig.addFilter("rfc822", (date) => new Date(date).toUTCString());
   eleventyConfig.addFilter("longDate", (date) =>
     new Date(date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }),

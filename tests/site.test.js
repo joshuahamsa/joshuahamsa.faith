@@ -52,11 +52,28 @@ test("home_features_aig", () => {
   assert.ok(iframes(page("/")).some((f) => f.includes("cTwKtSHD36E")));
 });
 
-test("candlelight_first", () => {
-  const first = iframes(page("/testimony/"))[0];
-  assert.ok(first.includes("cfXkQisIDOo"));
-  assert.ok(first.includes("start=478"));
-  assert.ok(first.includes("end=1265"));
+test("homepage has three explore cards for the enabled destinations", () => {
+  const html = page("/");
+  const explore = html.match(/<section class="explore-section"[^>]*>[\s\S]*?<\/section>/)?.[0] ?? "";
+  assert.equal((explore.match(/class="content-card"/g) ?? []).length, 3);
+  for (const route of ["/testimony/", "/ministry/", "/music/"]) assert.match(explore, new RegExp(`href="${route}"`));
+});
+
+test("testimony uses a card grid", () => {
+  assert.match(page("/testimony/"), /<div class="card-grid">/);
+});
+
+test("music groups recordings and playlists as media cards", () => {
+  const html = page("/music/");
+  assert.match(html, /class="media-card-grid recorded-grid"/);
+  assert.match(html, /class="media-card-grid playlist-grid"/);
+  assert.match(html, /Official video · Produced by H3 Music/);
+});
+
+test("candlelight_is_the_first_testimony card", () => {
+  const first = page("/testimony/").match(/<article class="video-card">[\s\S]*?<\/article>/)?.[0] ?? "";
+  assert.match(first, /cfXkQisIDOo/);
+  assert.match(first, /My testimony on Mother/);
 });
 
 test("embeds_have_titles", () => {
@@ -78,6 +95,20 @@ test("vimeo_is_a_link_card", () => {
   const html = page("/testimony/");
   assert.ok(html.includes("https://vimeo.com/866911348"));
   assert.ok(!iframes(html).some((f) => f.includes("vimeo")));
+});
+
+test("video cards link directly to YouTube with a preview image", () => {
+  const html = page("/testimony/");
+  assert.match(html, /class="video-card"/);
+  assert.match(html, /https:\/\/www\.youtube\.com\/watch\?v=cfXkQisIDOo&amp;t=478s/);
+  assert.match(html, /https:\/\/i\.ytimg\.com\/vi\/cfXkQisIDOo\/hqdefault\.jpg/);
+});
+
+test("Vimeo video cards use a fallback instead of an embed or remote thumbnail", () => {
+  const html = page("/testimony/");
+  const vimeoCard = html.split('<article class="video-card">').find((card) => card.includes("Salvation Testimony")) ?? "";
+  assert.match(vimeoCard, /video-card-fallback/);
+  assert.doesNotMatch(vimeoCard, /<iframe|i\.ytimg\.com/);
 });
 
 test("ministry_has_statement_line", () => {
@@ -111,4 +142,10 @@ test("og_image_exists", () => {
   const image = readFileSync(join(OUT, "assets", "og.png"));
   assert.equal(image.readUInt32BE(16), 1200);
   assert.equal(image.readUInt32BE(20), 630);
+});
+
+test("responsive card styles define components and a mobile layout", () => {
+  const css = read("src/assets/site.css");
+  for (const selector of [".card-grid", ".video-card", ".content-card", ".page-hero", ":focus-visible"]) assert.ok(css.includes(selector), selector);
+  assert.match(css, /@media\s*\([^)]*max-width[^)]*\)[\s\S]*?grid-template-columns:\s*1fr/);
 });

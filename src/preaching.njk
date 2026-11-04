@@ -4,11 +4,9 @@ title: Preaching and Teaching
 section: preaching
 permalink: /preaching/
 ---
-<h1>Preaching and Teaching</h1>
+<header class="page-hero"><p class="eyebrow">Messages</p><h1>Preaching and Teaching</h1></header>
+<div class="card-grid">
 {% for v in videos %}{% if v.group == "preaching" %}
-<section>
-  <h2>{{ v.title }}</h2>
-  <p class="meta">{{ v.church }}{% if v.date %} · {{ v.date }}{% endif %}</p>
-  {% video v %}
-</section>
+  {% videoCard v %}
 {% endif %}{% endfor %}
+</div>
