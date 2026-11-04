@@ -1,3 +1,6 @@
 raw/
 .superpowers/
 .remember/
+node_modules/
+_site/
+docs/

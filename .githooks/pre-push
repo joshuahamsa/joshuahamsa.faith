@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Blocks a push before anything leaves this machine, since CI runs too late to keep a private file private.
+set -euo pipefail
+bad=$(git ls-files | grep -E '^(raw|docs|\.superpowers|\.remember)/' || true)
+if [ -n "$bad" ]; then
+  echo "Refusing to push. Private or working files are tracked:" >&2
+  echo "$bad" >&2
+  exit 1
+fi
+npm test

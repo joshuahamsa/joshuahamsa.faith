@@ -1,0 +1,21 @@
+---
+section: journey
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>{{ site.name }}: Journey</title>
+    <link>{{ site.url }}/journey/</link>
+    <description>{{ site.description | escape }}</description>
+    {% for post in collections.posts %}<item>
+      <title>{{ post.data.title | escape }}</title>
+      <link>{{ site.url }}{{ post.url }}</link>
+      <guid>{{ site.url }}{{ post.url }}</guid>
+      <pubDate>{{ post.date | rfc822 }}</pubDate>
+      <description>{{ post.data.summary | escape }}</description>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

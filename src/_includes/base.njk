@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% set pageTitle = (title + " | " + site.name) if title else site.name %}
+  {% set pageDescription = description or site.description %}
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDescription }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ pageTitle }}">
+  <meta property="og:description" content="{{ pageDescription }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="site-name" href="/">{{ site.name }}</a>
+      <nav aria-label="Main">
+        <ul>
+          {% if site.sections.testimony %}<li><a href="/testimony/">Testimony</a></li>{% endif %}
+          {% if site.sections.preaching %}<li><a href="/preaching/">Preaching</a></li>{% endif %}
+          {% if site.sections.ministry %}<li><a href="/ministry/">Ministry</a></li>{% endif %}
+          {% if site.sections.music %}<li><a href="/music/">Music</a></li>{% endif %}
+          {% if site.sections.statement %}<li><a href="/statement/">Statement of Faith</a></li>{% endif %}
+          {% if site.sections.testimonyWork %}<li><a href="/testimony-work/">Testimony Work</a></li>{% endif %}
+          {% if site.sections.journey %}<li><a href="/journey/">Journey</a></li>{% endif %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    {{ content | safe }}
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>{{ site.name }} · <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    </div>
+  </footer>
+</body>
+</html>

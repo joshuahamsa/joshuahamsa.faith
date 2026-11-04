@@ -1,0 +1,19 @@
+{
+  "spotifyArtist": "0OyqOYR159hm2KnEwXclZI",
+  "recorded": [
+    { "key": "he-is-risen", "title": "He Is Risen", "note": "Official video · Produced by H3 Music", "host": "youtube", "videoId": "r9N7KvViC0g" },
+    { "key": "would-you", "title": "Would You?", "note": "Lyric video", "host": "youtube", "videoId": "Ruudg0drSew" },
+    { "key": "nothing-is-wasted", "title": "Nothing is Wasted", "note": "With Carlos Milian Jr. and Hogan the Poet · Easter 2022", "host": "youtube", "videoId": "nUSdt7kRC54" }
+  ],
+  "ai": {
+    "profile": "https://suno.com/@hamsa",
+    "featured": { "title": "Son of the King", "id": "d34a3163-4408-4214-a385-211695359aa1" },
+    "playlists": [
+      { "title": "Good News for the Bad Guys", "id": "391ad1f8-e8f0-4d32-a07e-363ab4a2f31b" },
+      { "title": "Highway to Zion", "id": "9ba0f6c0-1bcc-4a68-9aae-2718a6d55a05" },
+      { "title": "Weeping Prophet", "id": "488e7b5d-00d4-40c3-8d83-59d8f5561cf9" },
+      { "title": "Periodic Table", "id": "7e0056be-da57-425d-92b3-c8f7ddd24969" },
+      { "title": "Poetry", "id": "cf668edc-84be-424c-9ec7-b6a9d41d1910" }
+    ]
+  }
+}

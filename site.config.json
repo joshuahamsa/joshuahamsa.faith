@@ -1,0 +1,15 @@
+{
+  "name": "Joshua Hamsa",
+  "url": "https://joshuahamsa.faith",
+  "email": "contact@joshuahamsa.faith",
+  "description": "Joshua Hamsa's testimony, ministry, and music: the story of what God has done, and where he is leading next.",
+  "sections": {
+    "testimony": true,
+    "ministry": true,
+    "music": true,
+    "preaching": false,
+    "testimonyWork": false,
+    "statement": false,
+    "journey": false
+  }
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "key": "candlelight",
+    "group": "testimony",
+    "title": "My testimony on Mother's Day",
+    "church": "Candlelight Christian Fellowship",
+    "date": "May 10, 2026",
+    "host": "youtube",
+    "videoId": "cfXkQisIDOo",
+    "start": 478,
+    "end": 1265
+  },
+  {
+    "key": "moorpark",
+    "group": "testimony",
+    "title": "Sharing my testimony at Moorpark Presbyterian",
+    "church": "Moorpark Presbyterian Church",
+    "date": "November 19, 2023",
+    "host": "youtube",
+    "videoId": "PFV6hFJ3UVY",
+    "start": 2610,
+    "end": 2955
+  },
+  {
+    "key": "fillmore",
+    "group": "testimony",
+    "title": "Giving a reason for the hope I have",
+    "church": "FCC Fillmore",
+    "date": "November 26, 2023",
+    "host": "youtube",
+    "videoId": "u_lkcTFc2ks",
+    "start": 2160,
+    "end": 2745
+  },
+  {
+    "key": "aig-france",
+    "group": "testimony",
+    "featured": true,
+    "title": "Un flot continu de miracles (A continual stream of miracles)",
+    "church": "AIG France",
+    "date": "Posted February 2025",
+    "host": "youtube",
+    "videoId": "cTwKtSHD36E"
+  },
+  {
+    "key": "mountainhousehold",
+    "group": "testimony",
+    "title": "Joshua Hamsa Testimony",
+    "church": "MountainHouseHold",
+    "date": "Posted June 2022",
+    "host": "youtube",
+    "videoId": "HJ7ULM0AxRE"
+  },
+  {
+    "key": "gideons",
+    "group": "testimony",
+    "title": "Salvation Testimony",
+    "church": "The Gideons International",
+    "host": "vimeo",
+    "videoId": "866911348"
+  }
+]

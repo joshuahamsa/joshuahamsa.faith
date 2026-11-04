@@ -1,0 +1,10 @@
+---
+layout: base.njk
+---
+<article>
+  <h1>{{ title }}</h1>
+  <p class="meta">{{ page.date | longDate }}</p>
+  {% if video %}{% video video %}{% endif %}
+  {{ content | safe }}
+</article>
+<p><a href="/journey/">All journey posts</a></p>

@@ -1,0 +1,56 @@
+:root {
+  color-scheme: light dark;
+  --paper: #f6f4ef;
+  --ink: #2b2622;
+  --ink-soft: #57503f;
+  --accent: #8a5d2e;
+  --rule: #ddd7cb;
+  --panel: #efebe2;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #191512;
+    --ink: #e6e0d6;
+    --ink-soft: #b3a996;
+    --accent: #c89a5b;
+    --rule: #332c25;
+    --panel: #211c17;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+.wrap { max-width: 46rem; margin: 0 auto; padding: 0 1rem; }
+a { color: var(--accent); text-underline-offset: 0.15em; }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3 { line-height: 1.2; font-weight: 500; text-wrap: balance; }
+h1 { font-size: clamp(2.3rem, 7vw, 3.3rem); margin: 2.5rem 0 0.75rem; }
+h2 { font-size: 1.75rem; margin: 3rem 0 0.75rem; }
+h3 { font-size: 1.3rem; margin: 2rem 0 0.25rem; }
+img { max-width: 100%; height: auto; }
+.lead { font-size: 1.3rem; color: var(--ink-soft); }
+.meta { color: var(--ink-soft); font-size: 1rem; margin: 0 0 0.75rem; }
+
+.skip-link { position: absolute; left: -999px; top: 0; padding: 0.5rem 1rem; background: var(--panel); }
+.skip-link:focus { left: 0.5rem; top: 0.5rem; z-index: 1; }
+
+.site-header { border-bottom: 1px solid var(--rule); padding: 1rem 0; }
+.header-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1.5rem; }
+.site-name { font-size: 1.3rem; color: var(--ink); text-decoration: none; }
+.site-header ul { display: flex; flex-wrap: wrap; gap: 0 1.1rem; margin: 0; padding: 0; list-style: none; }
+.site-header nav a { display: inline-block; padding: 0.35rem 0; }
+
+.site-footer { border-top: 1px solid var(--rule); margin-top: 4rem; padding: 1rem 0 2rem; color: var(--ink-soft); font-size: 1rem; overflow-wrap: anywhere; }
+
+.video { margin: 1.25rem 0 0.5rem; }
+.video iframe { display: block; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; border: 0; background: var(--panel); }
+.link-card { background: var(--panel); border-left: 3px solid var(--accent); padding: 0.9rem 1.1rem; }
+.audio { display: block; width: 100%; max-width: 100%; border: 0; margin: 1rem 0 0.5rem; }
