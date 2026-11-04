@@ -52,11 +52,10 @@ test("home_features_aig", () => {
   assert.ok(iframes(page("/")).some((f) => f.includes("cTwKtSHD36E")));
 });
 
-test("candlelight_first", () => {
-  const first = iframes(page("/testimony/"))[0];
-  assert.ok(first.includes("cfXkQisIDOo"));
-  assert.ok(first.includes("start=478"));
-  assert.ok(first.includes("end=1265"));
+test("candlelight_is_the_first_testimony card", () => {
+  const first = page("/testimony/").match(/<article class="video-card">[\s\S]*?<\/article>/)?.[0] ?? "";
+  assert.match(first, /cfXkQisIDOo/);
+  assert.match(first, /My testimony on Mother/);
 });
 
 test("embeds_have_titles", () => {
@@ -78,6 +77,20 @@ test("vimeo_is_a_link_card", () => {
   const html = page("/testimony/");
   assert.ok(html.includes("https://vimeo.com/866911348"));
   assert.ok(!iframes(html).some((f) => f.includes("vimeo")));
+});
+
+test("video cards link directly to YouTube with a preview image", () => {
+  const html = page("/testimony/");
+  assert.match(html, /class="video-card"/);
+  assert.match(html, /https:\/\/www\.youtube\.com\/watch\?v=cfXkQisIDOo/);
+  assert.match(html, /https:\/\/i\.ytimg\.com\/vi\/cfXkQisIDOo\/hqdefault\.jpg/);
+});
+
+test("Vimeo video cards use a fallback instead of an embed or remote thumbnail", () => {
+  const html = page("/testimony/");
+  const vimeoCard = html.split('<article class="video-card">').find((card) => card.includes("Salvation Testimony")) ?? "";
+  assert.match(vimeoCard, /video-card-fallback/);
+  assert.doesNotMatch(vimeoCard, /<iframe|i\.ytimg\.com/);
 });
 
 test("ministry_has_statement_line", () => {
