@@ -1,0 +1,16 @@
+---
+layout: base.njk
+title: Testimony
+description: Joshua Hamsa shares what God has done in his life, in churches across several years.
+section: testimony
+permalink: /testimony/
+---
+<h1>Testimony</h1>
+<p class="lead">God met me in a jail cell through a Gideon Bible. These are some of the times I've been able to stand up and tell that story.</p>
+{% for v in videos %}{% if v.group == "testimony" %}
+<section>
+  <h2>{{ v.title }}</h2>
+  <p class="meta">{{ v.church }}{% if v.date %} · {{ v.date }}{% endif %}</p>
+  {% video v %}
+</section>
+{% endif %}{% endfor %}

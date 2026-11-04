@@ -1,0 +1,30 @@
+---
+layout: base.njk
+title: Music
+description: Music by Joshua Hamsa, with recorded songs and AI-made songs in separate sections.
+section: music
+permalink: /music/
+---
+<h1>Music</h1>
+
+<h2>Recorded</h2>
+<p>Music I&rsquo;ve recorded, most of it under the name MC Hamsa.</p>
+<iframe class="audio" src="https://open.spotify.com/embed/artist/{{ music.spotifyArtist }}" title="MC Hamsa on Spotify" height="352" loading="lazy" allow="encrypted-media; fullscreen"></iframe>
+<p><a href="https://open.spotify.com/artist/{{ music.spotifyArtist }}">Listen on Spotify</a></p>
+{% for song in music.recorded %}
+<h3>{{ song.title }}</h3>
+<p class="meta">{{ song.note }}</p>
+{% video song %}
+<p><a href="https://www.youtube.com/watch?v={{ song.videoId }}">Watch on YouTube</a></p>
+{% endfor %}
+
+<h2>Made with AI</h2>
+<p>These songs were made with AI, using Suno.</p>
+<h3>{{ music.ai.featured.title }}</h3>
+<iframe class="audio" src="https://suno.com/embed/{{ music.ai.featured.id }}" title="{{ music.ai.featured.title }} on Suno" height="240" loading="lazy"></iframe>
+<p><a href="https://suno.com/song/{{ music.ai.featured.id }}">Listen on Suno</a></p>
+<h3>Playlists</h3>
+<ul>
+{% for list in music.ai.playlists %}  <li><a href="https://suno.com/playlist/{{ list.id }}">{{ list.title }}</a></li>
+{% endfor %}</ul>
+<p><a href="{{ music.ai.profile }}">All of my songs on Suno</a></p>
