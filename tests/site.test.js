@@ -52,6 +52,23 @@ test("home_features_aig", () => {
   assert.ok(iframes(page("/")).some((f) => f.includes("cTwKtSHD36E")));
 });
 
+test("homepage has three explore cards for the enabled destinations", () => {
+  const html = page("/");
+  const explore = html.match(/<section class="explore-section"[^>]*>[\s\S]*?<\/section>/)?.[0] ?? "";
+  assert.equal((explore.match(/class="content-card"/g) ?? []).length, 3);
+  for (const route of ["/testimony/", "/ministry/", "/music/"]) assert.match(explore, new RegExp(`href="${route}"`));
+});
+
+test("testimony uses a card grid", () => {
+  assert.match(page("/testimony/"), /<div class="card-grid">/);
+});
+
+test("music groups recordings and playlists as media cards", () => {
+  const html = page("/music/");
+  assert.match(html, /class="media-card-grid recorded-grid"/);
+  assert.match(html, /class="media-card-grid playlist-grid"/);
+});
+
 test("candlelight_is_the_first_testimony card", () => {
   const first = page("/testimony/").match(/<article class="video-card">[\s\S]*?<\/article>/)?.[0] ?? "";
   assert.match(first, /cfXkQisIDOo/);
